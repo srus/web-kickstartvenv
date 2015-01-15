@@ -1,4 +1,4 @@
-# kickstartvenv
+# web-kickstartvenv
 
 Web project skeleton with [Virtualenv](https://github.com/pypa/virtualenv), [Nodeenv](https://github.com/ekalinin/nodeenv), [NVM](https://github.com/creationix/nvm) and [RVM](https://github.com/wayneeseguin/rvm).
 
@@ -20,7 +20,7 @@ Web project skeleton with [Virtualenv](https://github.com/pypa/virtualenv), [Nod
 
 ## Project deployment
 
-Move to the same path as this file and run: `./bin/build.sh`
+Move to the same path as this file and run: `./bin/build.sh`. And don't forget to **use the same name for your virtualenv and your project directory**.
 
 ## Directory structure
 
