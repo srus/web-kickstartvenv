@@ -1,0 +1,16 @@
+#!/bin/bash
+# This hook is run after this virtualenv is activated.
+
+PS1="\[\e[34;1m\](`basename \"$VIRTUAL_ENV\"`)\[\e[0m\] $_OLD_VIRTUAL_PS1"
+
+proj_path="{{proj_path}}"
+proj_name="`basename $proj_path`"
+
+export IPYTHONDIR="${proj_path}/conf/ipython"
+
+cd "$proj_path"
+
+PATH="${proj_path}/node_modules/.bin/:$PATH"
+nvm use "{{node_version}}"
+
+rvm use "{{ruby_version}}@${proj_name}"

@@ -1,0 +1,13 @@
+node_modules/
+bower_components/
+conf/
+
+*.pyc
+*.log
+*.sqlite
+*.sqlite3
+*.sublime-project
+*.sublime-workspace
+
+Gemfile.lock
+python_packages
