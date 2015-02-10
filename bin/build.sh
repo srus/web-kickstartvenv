@@ -10,7 +10,7 @@ proj_name="`basename $proj_path`"
 ruby_version="`grep '^ruby ' Gemfile | awk '{print $2}' | cut -d"'" -f2`"
 
 # Node version
-node_version="`grep '"node":' package.json | awk '{print $2}' | cut -d'"' -f2`"
+node_version="`grep '"node":' package.json | awk '{print $2}' | tr -d '"<>='`"
 
 # Prompt colors
 txtrst='\e[0m'     # text reset
