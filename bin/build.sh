@@ -26,11 +26,11 @@ echo ""
 
 # Check if dir exists
 if [[ ! -d "${proj_path}/conf" ]]; then
-    mkdir "${proj_path}/conf"
+    mkdir "${proj_path}/conf" || { echo "FATAL: Could not create 'conf' directory"; exit 1; }
 fi
 
 # Build virtualenv environment
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh || { echo "FATAL: Could not find '/usr/local/bin/virtualenvwrapper.sh'"; exit 1; }
 mkvirtualenv "$venv_name"
 
 # Set and activate virtualenv postactivate script
@@ -44,7 +44,7 @@ sed -i "s/{{ruby_version}}/$ruby_version/g" postactivate
 mv -f postactivate "${WORKON_HOME}/${venv_name}/bin/postactivate"
 mv -f postdeactivate "${WORKON_HOME}/${venv_name}/bin/postdeactivate"
 deactivate
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh || { echo "FATAL: Could not find '/usr/local/bin/virtualenvwrapper.sh'"; exit 1; }
 workon "$venv_name"
 
 echo ""
@@ -52,13 +52,13 @@ echo -e "${txtgrn}Installing Python packages...${txtrst}"
 echo ""
 
 # Install Python packages
-pip install -U -r "${proj_path}/requirements/development.txt"
+pip install -U -r "${proj_path}/requirements/development.txt" || { echo "FATAL: Could not install Python packages"; exit 1; }
 
 # Create link to Python packages
 ln -sf "$WORKON_HOME/${venv_name}/lib/python2.7/site-packages" "${proj_path}/python_packages"
 
 # Install and set Ruby virtual environment: http://rvm.io/
-curl -sSL https://get.rvm.io | bash
+curl -sSL https://get.rvm.io | bash || { echo "FATAL: Could not install RVM"; exit 1; }
 source "$HOME/.rvm/scripts/rvm"
 rvm install $ruby_version
 rvm use $ruby_version@$venv_name --create
@@ -68,29 +68,29 @@ echo -e "${txtgrn}Installing Ruby packages...${txtrst}"
 echo ""
 
 # Install Ruby packages
-bundle install
+bundle install || { echo "FATAL: Could not install Ruby packages"; exit 1; }
 
 # Install and set Node.js virtual environment: https://github.com/creationix/nvm
 curl https://raw.githubusercontent.com/creationix/nvm/v0.22.1/install.sh | bash
-source ~/.nvm/nvm.sh
+source ~/.nvm/nvm.sh || { echo "FATAL: Could not install NVM"; exit 1; }
 nvm install $node_version
 
 # Install the latest NPM
-curl -L https://npmjs.com/install.sh | sh
+curl -L https://npmjs.com/install.sh | sh || { echo "FATAL: Could not install NPM"; exit 1; }
 
 echo ""
-echo -e "${txtgrn}Installing Node packages...${txtrst}"
+echo -e "${txtgrn}Installing Node packages from root project...${txtrst}"
 echo ""
 
-# Install Node packages
-npm install
+# Install Node dependencies from root project
+npm install || { echo "FATAL: Could not install root project Node packages"; exit 1; }
 
 echo ""
 echo -e "${txtgrn}Configuring IPython...${txtrst}"
 echo ""
 
 # Set IPython default profile
-ipython profile create
+ipython profile create || { echo "FATAL: Could not create IPython profile"; exit 1; }
 ln -sf "${proj_path}/boot/ipython/ipython_config.py" "${proj_path}/conf/ipython/profile_default/ipython_config.py"
 
 echo ""
