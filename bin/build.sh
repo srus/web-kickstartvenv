@@ -1,17 +1,5 @@
 #!/usr/bin/env bash
 
-# Current path
-proj_path="`pwd`"
-
-# Project name
-proj_name="`basename $proj_path`"
-
-# Ruby version
-ruby_version="`grep '^ruby ' Gemfile | awk '{print $2}' | cut -d"'" -f2`"
-
-# Node version
-node_version="`grep '"node":' package.json | awk '{print $2}' | tr -d '"<>='`"
-
 # Prompt colors
 txtrst='\e[0m'     # text reset
 txtylw='\e[0;33m'  # regular yellow
@@ -23,6 +11,26 @@ echo ""
 echo -en "${txtylw}Name of project's virtualenv: ${txtrst}"
 read venv_name
 echo ""
+
+# Node version
+node_version="`grep '"node":' package.json | awk '{print $2}' | tr -d '"<>='`"
+test "$node_version" == "" && { echo "FATAL: Could not fetch Node.js version"; exit 1; }
+echo ""
+echo -e "${txtgrn}Using Node.js ${node_version} ...${txtrst}"
+echo ""
+
+# Ruby version
+ruby_version="`grep '^ruby ' Gemfile | awk '{print $2}' | cut -d"'" -f2`"
+test "$ruby_version" == "" && { echo "FATAL: Could not fetch Ruby version"; exit 1; }
+echo ""
+echo -e "${txtgrn}Using Ruby ${ruby_version} ...${txtrst}"
+echo ""
+
+# Current path
+proj_path="`pwd`"
+
+# Project name
+proj_name="`basename $proj_path`"
 
 # Check if dir exists
 if [[ ! -d "${proj_path}/conf" ]]; then
