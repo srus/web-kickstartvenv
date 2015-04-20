@@ -82,13 +82,6 @@ source ~/.nvm/nvm.sh || { echo "FATAL: Could not install NVM"; exit 1; }
 nvm install $node_version
 
 echo ""
-echo -e "${txtgrn}Installing Node packages...${txtrst}"
-echo ""
-
-# Install Node packages
-npm install || { echo "FATAL: Could not install Node packages"; exit 1; }
-
-echo ""
 echo -e "${txtgrn}Configuring IPython...${txtrst}"
 echo ""
 
@@ -97,7 +90,7 @@ ipython profile create || { echo "FATAL: Could not create IPython profile"; exit
 ln -sf "${proj_path}/boot/ipython/ipython_config.py" "${proj_path}/conf/ipython/profile_default/ipython_config.py"
 
 echo ""
-echo -e "${bldgrn}OK, project deployed.${txtrst}"
+echo -e "${txtgrn}Installing Node packages...${txtrst}"
 echo ""
 
 exit 0
