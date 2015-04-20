@@ -67,7 +67,7 @@ ln -sf "$WORKON_HOME/${venv_name}/lib/python2.7/site-packages" "${proj_path}/pyt
 curl -sSL https://get.rvm.io | bash || { echo "FATAL: Could not install RVM"; exit 1; }
 source "$HOME/.rvm/scripts/rvm"
 rvm install $ruby_version
-rvm use $ruby_version@$venv_name --create
+rvm use "${ruby_version}@${venv_name}" --create
 
 echo ""
 echo -e "${txtgrn}Installing Ruby packages...${txtrst}"
