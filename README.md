@@ -13,10 +13,10 @@ Web project skeleton with [Virtualenv](https://github.com/pypa/virtualenv), [Nod
 
 ## System requirements
 
-- Python >=2.7.3
-- Pip >=1.5.3
-- Virtualenv >=1.11.6
-- Virtualenvwrapper >=4.2
+- Python ^2.7.3
+- Pip ^6.0.8
+- Virtualenv ^12.0.7
+- Virtualenvwrapper ^4.3.2
 
 ## Project deployment
 
