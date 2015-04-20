@@ -46,6 +46,7 @@ path="${proj_path//\//\\/}"  # escape forward slashes
 sed -i "s/{{proj_path}}/$path/g" postactivate
 sed -i "s/{{node_version}}/$node_version/g" postactivate
 sed -i "s/{{ruby_version}}/$ruby_version/g" postactivate
+sed -i "s/{{env_name}}/$venv_name/g" postactivate
 mv -f postactivate "${WORKON_HOME}/${venv_name}/bin/postactivate"
 mv -f postdeactivate "${WORKON_HOME}/${venv_name}/bin/postdeactivate"
 deactivate
