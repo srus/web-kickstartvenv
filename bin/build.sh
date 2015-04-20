@@ -83,9 +83,6 @@ curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
 source ~/.nvm/nvm.sh || { echo "FATAL: Could not install NVM"; exit 1; }
 nvm install $node_version
 
-# Install the latest NPM
-curl -L https://npmjs.com/install.sh | sh || { echo "FATAL: Could not install NPM"; exit 1; }
-
 echo ""
 echo -e "${txtgrn}Installing Node packages from root project...${txtrst}"
 echo ""
