@@ -20,7 +20,7 @@ Web project skeleton with [Virtualenv](https://github.com/pypa/virtualenv), [Nod
 
 ## Project deployment
 
-Move to the same path as this file and run: `./bin/build.sh`. You can run this script both to install and update the project.
+Move to the same path as this file and run: `npm install`
 
 ## Directory structure
 
