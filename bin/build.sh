@@ -29,9 +29,6 @@ echo ""
 # Current path
 proj_path="`pwd`"
 
-# Project name
-proj_name="`basename $proj_path`"
-
 # Check if dir exists
 if [[ ! -d "${proj_path}/conf" ]]; then
     mkdir "${proj_path}/conf" || { echo "FATAL: Could not create 'conf' directory"; exit 1; }
