@@ -79,7 +79,7 @@ echo ""
 bundle install || { echo "FATAL: Could not install Ruby packages"; exit 1; }
 
 # Install and set Node.js virtual environment: https://github.com/creationix/nvm
-curl https://raw.githubusercontent.com/creationix/nvm/v0.22.1/install.sh | bash
+curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
 source ~/.nvm/nvm.sh || { echo "FATAL: Could not install NVM"; exit 1; }
 nvm install $node_version
 
