@@ -89,7 +89,7 @@ echo ""
 pip install -U -r "${proj_path}/requirements/development.txt" || { echo "FATAL: Could not install Python packages"; exit 1; }
 
 # Create link to Python packages
-ln -sf "${VIRTUAL_ENV}/lib/python2.7/site-packages" "${proj_path}/python_packages"
+ln -sf "${VIRTUAL_ENV}/lib/$(ls ${VIRTUAL_ENV}/lib)/site-packages" "${proj_path}/python_packages" || { echo "FATAL: Could not create symlink to Python 'site-packages'"; exit 1; }
 
 # Install and set Ruby virtual environment: http://rvm.io/
 curl -sSL https://get.rvm.io | bash || { echo "FATAL: Could not install RVM"; exit 1; }
