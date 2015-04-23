@@ -1,7 +1,7 @@
 {
   "name": "kickstartvenv",
-  "version": "1.0.0",
-  "description": "Web project skeleton with Virtualenv, Nodeenv, NVM and RVM.",
+  "version": "1.0.1",
+  "description": "Start your next web project with a pre-configured virtual environment in a few seconds.",
   "private": true,
   "dependencies": {},
   "devDependencies": {
