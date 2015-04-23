@@ -75,8 +75,8 @@ sed -i "s/{{proj_path}}/$path/g" postactivate
 sed -i "s/{{node_version}}/$node_version/g" postactivate
 sed -i "s/{{ruby_version}}/$ruby_version/g" postactivate
 sed -i "s/{{env_name}}/$venv_name/g" postactivate
-mv -f postactivate "${WORKON_HOME}/${venv_name}/bin/postactivate"
-mv -f postdeactivate "${WORKON_HOME}/${venv_name}/bin/postdeactivate"
+mv -f postactivate "${VIRTUAL_ENV}/bin/postactivate"
+mv -f postdeactivate "${VIRTUAL_ENV}/bin/postdeactivate"
 deactivate
 source "$venvwrapper"
 workon "$venv_name"
@@ -89,7 +89,7 @@ echo ""
 pip install -U -r "${proj_path}/requirements/development.txt" || { echo "FATAL: Could not install Python packages"; exit 1; }
 
 # Create link to Python packages
-ln -sf "$WORKON_HOME/${venv_name}/lib/python2.7/site-packages" "${proj_path}/python_packages"
+ln -sf "${VIRTUAL_ENV}/lib/python2.7/site-packages" "${proj_path}/python_packages"
 
 # Install and set Ruby virtual environment: http://rvm.io/
 curl -sSL https://get.rvm.io | bash || { echo "FATAL: Could not install RVM"; exit 1; }
