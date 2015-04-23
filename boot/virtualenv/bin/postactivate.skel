@@ -12,4 +12,4 @@ cd "$proj_path"
 PATH="${proj_path}/node_modules/.bin/:$PATH"
 nvm use "{{node_version}}"
 
-rvm use "{{ruby_version}}@${{env_name}}"
+rvm use "{{ruby_version}}@{{env_name}}"
