@@ -98,6 +98,12 @@ rvm install $ruby_version
 rvm use "${ruby_version}@${venv_name}" --create
 
 echo ""
+echo -e "${txtgrn}Installing Bundler...${txtrst}"
+echo ""
+
+gem install bundler || { echo "FATAL: Could not install Bundler"; exit 1; }
+
+echo ""
 echo -e "${txtgrn}Installing Ruby packages...${txtrst}"
 echo ""
 
